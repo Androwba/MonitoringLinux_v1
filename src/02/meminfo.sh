@@ -1,0 +1,12 @@
+RAM_TOTAL="$(free -m | awk '/Mem:/{printf "%.3f GB", $2/1024}')"
+echo RAM_TOTAL = $RAM_TOTAL
+RAM_USED="$(free -m | awk '/Mem:/{printf "%.3f GB", $3/1024}')"
+echo RAM_USED = $RAM_USED
+RAM_FREE="$(free -m | awk '/Mem/{printf "%.3f GB", $4/1024}')"
+echo RAM_FREE = $RAM_FREE
+SPACE_ROOT="$(df /root/ | awk '/\/$/ {printf "%.2f MB", $2/1024}')"
+echo SPACE_ROOT = $SPACE_ROOT
+SPACE_ROOT_USED="$(df /root/ | awk '/\/$/ {printf "%.2f MB", $3/1024}')"
+echo SPACE_ROOT_USED = $SPACE_ROOT_USED
+SPACE_ROOT_FREE="$(df /root/ | awk '/\/$/ {printf "%.2f MB", $4/1024}')"
+echo SPACE_ROOT_FREE = $SPACE_ROOT_FREE

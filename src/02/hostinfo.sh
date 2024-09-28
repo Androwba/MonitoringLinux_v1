@@ -1,0 +1,20 @@
+HOSTNAME=$(uname -n) # -n prints the hostname of the network node
+echo HOSTNAME = $HOSTNAME
+TIMEZONE="$(cat /etc/timezone) UTC $(date +"%Z")"
+echo TIMEZONE = $TIMEZONE
+USER="$(id -un)" # -n displas a name instead of a number, -u shows user ID
+echo USER = $USER
+OS="$(cat /etc/issue | awk '{print $1 , $2}')"
+echo OS = $OS
+DATE="$(date +"%d %B %Y %T")"
+echo DATE = $DATE
+UPTIME="$(uptime -p)" # -p filter uptime’s result to show only the running time of the system
+echo UPTIME = $UPTIME
+UPTIME_SEC="$(awk '{print int ($1)}' /proc/uptime)"
+echo UPTIME_SEC = $UPTIME_SEC
+IP="$(hostname -I | awk '{print $1}')"
+echo IP = $IP
+MASK="$(netstat -rn | awk 'NR==4{print $3}')" #Number of Record
+echo MASK = $MASK
+GATEWAY="$(route -n | grep 'UG[ \t]' | awk '{print $2}')"
+echo GATEWAY = $GATEWAY
